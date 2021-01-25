@@ -21,6 +21,7 @@ function renderCat(cat) {
             </div>
         </div>`
 
+    
     cat.hobbies.forEach(hobby => {
         let hobbyLi = document.createElement("li")
             hobbyLi.innerText = hobby.name
@@ -29,3 +30,30 @@ function renderCat(cat) {
     })
 }
 
+//Define a function for handling submit
+// Grabing the form for new cat, add a 'submit' event to the form
+// Grab the values from the event
+// let newCat = {
+//     name: event.target.???
+// }
+function handleSubmit(){
+    document.querySelector('form').addEventListener('submit', (event) => {
+        event.preventDefault()
+        let newCat = {
+            name: event.target.catName.value,
+            image: event.target.image.value,
+            breed: event.target.breed.value,
+            fluffiness: event.target.fluff.value
+        }
+
+        fetch(CAT_URL, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(newCat)
+        })
+        .then(r => r.json())
+        .then(renderCat)
+
+        console.log(newCat)
+    })
+}

@@ -8,4 +8,5 @@ document.addEventListener('DOMContentLoaded', function(){
 function init(){
   loadCats()
   renderHobbies()
+  handleSubmit()
 }

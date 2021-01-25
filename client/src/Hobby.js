@@ -1,5 +1,6 @@
 const HOBBY_URL = "http://localhost:3000/hobbies"
 
+
 function renderHobbies(){
     fetch(HOBBY_URL)
         .then(r => r.json())
